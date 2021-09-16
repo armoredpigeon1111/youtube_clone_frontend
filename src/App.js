@@ -14,7 +14,7 @@ class App extends Component {
      }
   }
 
-  handleCallback = (searchData) =>{
+  myCallback = (searchData) =>{
     this.setState({search: searchData})
   }
 
@@ -22,7 +22,7 @@ class App extends Component {
     const {search} = this.state;
     return ( 
         <div>
-          <Search search = {this.handleCallback}/>
+          <Search search = {this.myCallback}/>
           {search}
         </div>
      );

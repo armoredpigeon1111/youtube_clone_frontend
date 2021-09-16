@@ -8,19 +8,22 @@ class Search extends Component {
          }
     }
 
+    callBackFunction = () =>{
+        let searchData = this.state.search
+        this.props.search(searchData);
+    }
+
     handleChange = (event) =>{
-        var search = this.state.search;
-        this.props.handleCallback(search);
-        this.setState({
-            
+        this.setState({          
             [event.target.name]: event.target.value         
         });
+       
      }
  
      handleSubmit = (event) =>{
          debugger;
-         this.props.App(event.target.search.value)
          event.preventDefault();
+         this.callBackFunction();
      }
 
     render() { 
