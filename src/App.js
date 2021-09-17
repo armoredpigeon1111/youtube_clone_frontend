@@ -27,13 +27,13 @@ class App extends Component {
     })
   }
 
-  async getVideos() {
+  async getVideos(search) {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search/`, {
       params:{
         part: 'snippet',
         maxResults: 5,
         key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
-        q: this.state.search,
+        q: search,
         type: 'video'
       }
     });
@@ -48,7 +48,7 @@ class App extends Component {
 
   myCallback = (searchData) =>{
     this.setState({search: searchData});
-    this.getVideos();
+    this.getVideos(searchData);
   }
 
   render() { 
@@ -56,17 +56,13 @@ class App extends Component {
     return ( 
         <div>
           <Search search = {this.myCallback}/>
-          <SearchList videos = {this.state.videos} />
+          {/* <SearchList videos = {this.state.videos} /> */}
           <MainVideo selectedVideo = {this.state.selectedVideo}/>
           <CommentForm comments = {this.state.comments}/>
+         
+         {console.log(this.state.search)}
           {this.state.search !== '' ?
-          
-          this.state.videos.map((video)=>{
-            return(
-              <div>{video.id.videoid}</div>
-            );
-          })
-
+          <SearchList videos = {this.state.videos} />
           : <div>No Search</div>}
           
         </div>

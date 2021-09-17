@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchList = (props) => {
 
-    debugger;
+    // debugger;
     let videos = props.videos;
     
     return ( 
@@ -12,6 +12,8 @@ const SearchList = (props) => {
                     
                     <div>{video.id.videoId}
                     <img src={video.snippet.thumbnails.default.url}/>
+                    {video.snippet.title}
+                    {video.snippet.description}
                     </div>
                 );
             })}
