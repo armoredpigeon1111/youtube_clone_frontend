@@ -6,6 +6,7 @@ import SearchList from './components/SearchList/searchList';
 import axios from 'axios'
 import MainVideo from './components/MainVideo/MainVideo';
 import './components/API/youtube';
+import CommentForm from './components/Comment Form/CommentForm';
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +17,14 @@ class App extends Component {
       comments: [],
       search: '',
      }
+  }
+
+  async getComments() {
+    let response = await axios.get('127.0.0.1:8000/comments/')
+    console.log(response)
+    this.setState({
+      comments: response.data
+    })
   }
 
   async getVideos() {
@@ -49,7 +58,8 @@ class App extends Component {
           <Search search = {this.myCallback}/>
           <SearchList videos = {this.state.videos} />
           <MainVideo selectedVideo = {this.state.selectedVideo}/>
-          {this.state.search != '' ?
+          <CommentForm comments = {this.state.comments}/>
+          {this.state.search !== '' ?
           
           this.state.videos.map((video)=>{
             return(
