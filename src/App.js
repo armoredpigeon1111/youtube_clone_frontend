@@ -5,6 +5,7 @@ import Search from './components/Search/search';
 import SearchList from './components/SearchList/searchList';
 import axios from 'axios'
 import MainVideo from './components/MainVideo/MainVideo';
+import './components/API/youtube';
 
 class App extends Component {
   constructor(props) {
@@ -14,16 +15,25 @@ class App extends Component {
       selectedVideo: null,
       comments: [],
       search: '',
-      apiKey: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
      }
   }
 
-  async getVideos() {
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${this.state.search}&key=${this.state.apiKey}`);
+  async getVideos(search) {
+    let response = await axios.get(`search`, {
+      params:{
+        part: 'snippet',
+        maxResults: 5,
+        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
+        q: search,
+        type: 'video'
+      }
+    });
     console.log(response);
     this.setState({
-      videos: response.data,
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
     });
+    console.log(response.data.items)
   }
 
   myCallback = (searchData) =>{
