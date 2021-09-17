@@ -4,6 +4,7 @@ import './App.css';
 import Search from './components/Search/search';
 import SearchList from './components/SearchList/searchList';
 import axios from 'axios'
+import MainVideo from './components/MainVideo/MainVideo';
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends Component {
         <div>
           <Search search = {this.myCallback}/>
           <SearchList videos = {this.state.videos} />
+          <MainVideo selectedVideo = "kAS__7slsFs"/>
         </div>
      );
   }

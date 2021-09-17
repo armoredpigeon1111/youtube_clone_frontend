@@ -1,13 +1,13 @@
 import React from 'react';
 
 const MainVideo = ({ selectedVideo }) => {
-    if(!selectedVideo) return <div>No Video Selected. Please search for a video</div>
+    // if(!selectedVideo) return <div>No Video Selected. Please search for a video</div>
 
-    const videoSrc = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
+    const videoSrc = `https://www.youtube.com/embed/${selectedVideo}`;
 
     return (
         <div>
-            <iframe id="ytplayer" type="text/html" width="1000" height="562.5"
+            <iframe id="ytplayer" type="text/html" width="640" height="390"
                 src={videoSrc}
                 frameborder="0">
             </iframe>
