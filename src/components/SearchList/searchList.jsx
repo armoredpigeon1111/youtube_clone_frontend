@@ -5,14 +5,12 @@ const SearchList = (props) => {
     // debugger;
     let videos = props.videos;
     let video_id = '';
- 
     
     const callBackFunction = (video_id) =>{
-        let selectedVideo = video_id;
         props.func(video_id);
-        // props.selectedVideo = video_id;
         console.log("callback");
         console.log(video_id);
+
     }
 
     return ( 

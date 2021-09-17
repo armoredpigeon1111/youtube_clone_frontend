@@ -32,7 +32,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
+        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
         q: search,
         type: 'video'
       }
