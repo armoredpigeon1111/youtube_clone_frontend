@@ -9,7 +9,7 @@ const SearchList = (props) => {
         <div>
             {videos.map((video)=>{
                 return(
-                    video.items
+                    <div>{video.id.videoid}</div>
                 );
             })}
         </div>
