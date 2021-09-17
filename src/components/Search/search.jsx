@@ -21,7 +21,6 @@ class Search extends Component {
      }
  
      handleSubmit = (event) =>{
-         debugger;
          event.preventDefault();
          this.callBackFunction();
      }
