@@ -65,7 +65,7 @@ class App extends Component {
 
           {this.state.search !== '' ?
           <SearchList videos = {this.state.videos} func = {onSelect}/>
-          : <div>No Search</div>}
+          : <div></div>}
 
           <MainVideo selectedVideo = {this.state.selectedVideo}/>
           <CommentForm comments = {this.state.comments}/>
