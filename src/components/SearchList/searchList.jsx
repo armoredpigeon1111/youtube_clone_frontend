@@ -9,7 +9,10 @@ const SearchList = (props) => {
         <div>
             {videos.map((video)=>{
                 return(
-                    <div>{video.id.videoid}</div>
+                    
+                    <div>{video.id.videoId}
+                    <img src={video.snippet.thumbnails.default.url}/>
+                    </div>
                 );
             })}
         </div>

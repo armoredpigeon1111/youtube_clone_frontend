@@ -63,7 +63,7 @@ class App extends Component {
           
           this.state.videos.map((video)=>{
             return(
-              <div>{video.id}</div>
+              <div>{video.id.videoid}</div>
             );
           })
 
