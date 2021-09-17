@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   async getVideos(search) {
-    let response = await axios.get(`search`, {
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search/`, {
       params:{
         part: 'snippet',
         maxResults: 5,
@@ -31,7 +31,7 @@ class App extends Component {
     console.log(response);
     this.setState({
       videos: response.data.items,
-      selectedVideo: response.data.items[0]
+      selectedVideo: 'Xo6E9R4_PtU'
     });
     console.log(response.data.items)
   }
@@ -46,7 +46,7 @@ class App extends Component {
         <div>
           <Search search = {this.myCallback}/>
           <SearchList videos = {this.state.videos} />
-          <MainVideo selectedVideo = "kAS__7slsFs"/>
+          <MainVideo selectedVideo = 'Xo6E9R4_PtU'/>
         </div>
      );
   }

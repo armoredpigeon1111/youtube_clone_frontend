@@ -11,9 +11,9 @@ const MainVideo = ({ selectedVideo }) => {
                 src={videoSrc}
                 frameborder="0">
             </iframe>
-            <h2>{selectedVideo.snippet.title}</h2>
+            {/* <h2>{selectedVideo.snippet.title}</h2>
             <h4>{selectedVideo.snippet.channelTitle}</h4>
-            <p>{selectedVideo.snippet.description}</p>
+            <p>{selectedVideo.snippet.description}</p> */}
         </div>
     )
 }
