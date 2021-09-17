@@ -51,19 +51,26 @@ class App extends Component {
     this.getVideos(searchData);
   }
 
+
+
   render() { 
     const {search} = this.state;
+    const onSelect = (video) =>{
+      this.setState({selectedVideo: video});
+      console.log(video);
+    }
     return ( 
         <div>
           <Search search = {this.myCallback}/>
-          {/* <SearchList videos = {this.state.videos} /> */}
+
+          {this.state.search !== '' ?
+          <SearchList videos = {this.state.videos} func = {onSelect}/>
+          : <div>No Search</div>}
+
           <MainVideo selectedVideo = {this.state.selectedVideo}/>
           <CommentForm comments = {this.state.comments}/>
          
-         {console.log(this.state.search)}
-          {this.state.search !== '' ?
-          <SearchList videos = {this.state.videos} />
-          : <div>No Search</div>}
+
           
         </div>
      );
