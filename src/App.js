@@ -97,7 +97,7 @@ class App extends Component {
         <div>
           <Search search = {this.myCallback}/>
 
-          {this.state.search !== '' ?
+          {this.state.search !== '' && this.state.selectedVideo === null ?
           <SearchList videos = {this.state.videos} func = {onSelect}/>
           : <div></div>}
 
