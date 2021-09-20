@@ -3,6 +3,8 @@ import React from 'react';
 
 const CommentView = (props) => {
 
+    let video_id = props.selectedVideo;
+
     return (
         <div>
             <br/><br/>
