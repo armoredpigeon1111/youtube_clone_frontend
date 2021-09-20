@@ -37,21 +37,14 @@ class App extends Component {
     })
   }
 
-  async likeComment(commentID, video ) {
-    let response = await axios.patch(`http://127.0.0.1:8000/${commentID}/likes/`);
-    this.getComments(video)
-  }
-  async dislikeComment(commentID, video ) {
-    let response = await axios.patch(`http://127.0.0.1:8000/${commentID}/dislikes/`);
-    this.getComments(video)
-  }
+
 
   async getVideos(search) {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search/`, {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyAKepytxUmWxBY5Q5bdSatiMDLGhFI9o1I',
+        key: 'AIzaSyDr27JlfjiKPeYXzDp1qzqUI-l4pMNTJTs',
         q: search,
         type: 'video'
       }
@@ -68,7 +61,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyAKepytxUmWxBY5Q5bdSatiMDLGhFI9o1I',
+        key: 'AIzaSyDr27JlfjiKPeYXzDp1qzqUI-l4pMNTJTs',
         relatedToVideoId: selectedVideo,
         type: 'video'
       }

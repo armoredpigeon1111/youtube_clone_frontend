@@ -18,6 +18,8 @@ const RelatedVideos = (props) => {
     return ( 
         
         <div>
+            <br /> <br />
+            <h2>Related Videos </h2>
             {videos.map((video)=>{
                 video_id = video.id.videoId
                 return(
