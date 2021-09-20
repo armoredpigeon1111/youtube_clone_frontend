@@ -16,13 +16,14 @@ const SearchList = (props) => {
     return ( 
         
         <div>
+            <h2>Search Results: </h2>
             {videos.map((video)=>{
                 video_id = video.id.videoId
                 return(
                     
                     <div >
                     <button onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} alt = ""/></button><br/>
-                    <bold>{video.snippet.title}</bold><br/>
+                    <strong><h3>{video.snippet.title}</h3></strong>
                     {video.snippet.description}
                     </div>
                 );
