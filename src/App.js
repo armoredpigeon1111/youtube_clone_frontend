@@ -107,7 +107,7 @@ class App extends Component {
             />}
             {console.log("Comments in state: ", this.state.comments)}
           {this.state.dataloaded && <CommentForm comments = {this.state.comments} selectedVideo = {this.state.selectedVideo} /> }
-          <RelatedVideos videos = {this.state.relatedVideos} />
+          <RelatedVideos videos = {this.state.relatedVideos} func={onSelect} />
         </div>
      );
   }
