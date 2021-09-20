@@ -6,7 +6,8 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            comments : props.comments
+            comments : props.comments,
+            comment: ''
          }
     }
 
@@ -20,9 +21,32 @@ class CommentForm extends Component {
         // this.getComments(video)
       }
 
+    addComment = async() => {
+        await axios.post(`http://127.0.0.1:8000/comments/`, this.state.comment);
+        // this.getComments(video)
+      }  
+
+    handleChange = (event) =>{
+        this.setState({
+            [event.target.name]: event.target.value         
+        });
+     }
+ 
+     handleSubmit = (event) =>{
+         event.preventDefault();
+        this.addComment();
+     }  
+
     render() { 
             return (
                 <div>
+
+                    <form onSubmit ={this.handleSubmit}>
+                        <label>Comment:</label>
+                        <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
+                        <button className="btn" type="submit">Add Comment</button>
+                    </form>
+
                     <br/><br/>
                     <table>
                         <thead>
