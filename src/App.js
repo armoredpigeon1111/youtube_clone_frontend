@@ -7,7 +7,7 @@ import axios from 'axios'
 import MainVideo from './components/MainVideo/MainVideo';
 import './components/API/youtube';
 import CommentForm from './components/Comment Form/CommentForm';
-import RelatedVideos from './components/RelatedVideos/relatedVideos';
+// import RelatedVideos from './components/RelatedVideos/relatedVideos';
 
 class App extends Component {
   constructor(props) {
@@ -23,6 +23,9 @@ class App extends Component {
      }
   }
 
+  componentDidMount(){
+    this.getComments();
+  }
   async getComments() {
     let response = await axios.get('127.0.0.1:8000/comments/')
     console.log(response)
@@ -36,7 +39,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
+        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
         q: search,
         type: 'video'
       }
@@ -50,24 +53,24 @@ class App extends Component {
     console.log(response.data.items);
   }
 
-  async getRelatedVideos() {
-    let response = await axios.get(` https://www.googleapis.com/youtube/v3/search`, {
-      params:{
-        part: 'snippet',
-        maxResults: 5,
-        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
-        relatedToVideoID: this.state.selectedVideo,
-        type: 'video'
-      }
-    });
-    console.log(response);
-    this.setState({
-      relatedVideos: response.data.items,
-      selectedVideo: this.state.selectedVideo
-    });
-    console.log("GetRelatedVideos");
-    console.log(response.data.items);
-  }
+  // async getRelatedVideos() {
+  //   let response = await axios.get(` https://www.googleapis.com/youtube/v3/search`, {
+  //     params:{
+  //       part: 'snippet',
+  //       maxResults: 5,
+  //       key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
+  //       relatedToVideoID: this.state.selectedVideo,
+  //       type: 'video'
+  //     }
+  //   });
+  //   console.log(response);
+  //   this.setState({
+  //     relatedVideos: response.data.items,
+  //     selectedVideo: this.state.selectedVideo
+  //   });
+  //   console.log("GetRelatedVideos");
+  //   console.log(response.data.items);
+  // }
 
   myCallback = (searchData) =>{
     this.setState({search: searchData});
@@ -92,11 +95,11 @@ class App extends Component {
           <MainVideo selectedVideo = {this.state.selectedVideo} 
             videoTitle = {this.state.videoTitle} 
             videoDescription ={this.state.videoDescription}
-            relatedVideos = {this.getRelatedVideos}
+            // relatedVideos = {this.getRelatedVideos}
             />
-          <CommentForm comments = {this.state.comments}/>
-          <RelatedVideos videos = {this.state.relatedVideos} 
-          func = {onSelect}/>
+          <CommentForm comments = {this.state.comments} />
+          {/* <RelatedVideos videos = {this.state.relatedVideos} 
+          func = {onSelect}/> */}
         </div>
      );
   }
