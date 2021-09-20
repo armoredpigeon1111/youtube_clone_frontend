@@ -29,8 +29,8 @@ class App extends Component {
   }
 
 
-  async getComments() {
-    let response = await axios.get(`http://127.0.0.1:8000/comments/${this.state.selectedVideo}/`)
+  async getComments(video) {
+    let response = await axios.get(`http://127.0.0.1:8000/comments/${video}/`)
     this.setState({
       comments: response.data,
       dataloaded: true
@@ -51,7 +51,7 @@ class App extends Component {
       videos: response.data.items,
       selectedVideo: this.state.selectedVideo,
     });
-    this.getComments();
+
   }
 
   async getRelatedVideos(selectedVideo) {
@@ -86,6 +86,7 @@ class App extends Component {
       this.setState({selectedVideo: video, videoTitle: video_title, 
         videoDescription: video_description})
         this.getRelatedVideos(video);  
+        this.getComments(video);
     }
 
 
