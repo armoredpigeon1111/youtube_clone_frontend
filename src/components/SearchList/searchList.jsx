@@ -6,8 +6,8 @@ const SearchList = (props) => {
     let videos = props.videos;
     let video_id = '';
     
-    const callBackFunction = (video_id) =>{
-        props.func(video_id);
+    const callBackFunction = (video_id, video_title, video_description) =>{
+        props.func(video_id, video_title, video_description);
         console.log("callback");
         console.log(video_id);
 
@@ -21,7 +21,7 @@ const SearchList = (props) => {
                 return(
                     
                     <div >
-                    <button onClick={()=>callBackFunction(video.id.videoId)}><img src={video.snippet.thumbnails.default.url} /></button><br/>
+                    <button onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} /></button><br/>
                     <bold>{video.snippet.title}</bold><br/>
                     {video.snippet.description}
                     </div>

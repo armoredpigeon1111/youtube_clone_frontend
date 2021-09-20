@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainVideo = ({ selectedVideo }) => {
+const MainVideo = ({ selectedVideo, videoTitle, videoDescription }) => {
     // if(!selectedVideo) return <div>No Video Selected. Please search for a video</div>
 
     const videoSrc = `https://www.youtube.com/embed/${selectedVideo}`;
@@ -11,9 +11,8 @@ const MainVideo = ({ selectedVideo }) => {
                 src={videoSrc}
                 frameborder="0">
             </iframe>
-            {/* <h2>{selectedVideo.snippet.title}</h2>
-            <h4>{selectedVideo.snippet.channelTitle}</h4>
-            <p>{selectedVideo.snippet.description}</p> */}
+            <h2>{videoTitle}</h2>
+            <p>{videoDescription}</p>
         </div>
     )
 }

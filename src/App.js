@@ -16,6 +16,8 @@ class App extends Component {
       selectedVideo: null,
       comments: [],
       search: '',
+      videoTitle: '',
+      videoDescription: '',
      }
   }
 
@@ -51,12 +53,11 @@ class App extends Component {
     this.getVideos(searchData);
   }
 
-
-
   render() { 
     const {search} = this.state;
-    const onSelect = (video) =>{
-      this.setState({selectedVideo: video});
+    const onSelect = (video, video_title, video_description) =>{
+      this.setState({selectedVideo: video, videoTitle: video_title, 
+        videoDescription: video_description});
       console.log(video);
     }
     return ( 
@@ -67,11 +68,10 @@ class App extends Component {
           <SearchList videos = {this.state.videos} func = {onSelect}/>
           : <div></div>}
 
-          <MainVideo selectedVideo = {this.state.selectedVideo}/>
+          <MainVideo selectedVideo = {this.state.selectedVideo} 
+            videoTitle = {this.state.videoTitle} 
+            videoDescription ={this.state.videoDescription}/>
           <CommentForm comments = {this.state.comments}/>
-         
-
-          
         </div>
      );
   }
