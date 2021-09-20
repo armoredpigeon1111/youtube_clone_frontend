@@ -26,7 +26,7 @@ const RelatedVideos = (props) => {
                     
                     <div >
                     <button onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} /></button><br/>
-                    <bold>{video.snippet.title}</bold><br/>
+                    {video.snippet.title}<br/>
                     {video.snippet.description}
                     </div>
                 );

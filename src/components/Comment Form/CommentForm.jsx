@@ -10,16 +10,15 @@ class CommentForm extends Component {
          }
     }
 
-    async likeComment(commentID, video ) {
-        let response = await axios.patch(`http://127.0.0.1:8000/${commentID}/likes/`);
-        this.getComments(video)
+    likeComment = async(commentID) => {
+        await axios.patch(`http://127.0.0.1:8000/comments/${commentID}/likes/`);
+        // this.getComments(video)
         console.log("Like Added")
       }
-    async dislikeComment(commentID, video ) {
-        let response = await axios.patch(`http://127.0.0.1:8000/${commentID}/dislikes/`);
-        this.getComments(video)
+    dislikeComment = async(commentID) => {
+        await axios.patch(`http://127.0.0.1:8000/comments/${commentID}/dislikes/`);
+        // this.getComments(video)
       }
-
 
     render() { 
             return (
@@ -34,15 +33,13 @@ class CommentForm extends Component {
                         <tbody>
                         {this.state.comments.map((comment) => {
                             return(
-                                <div>
+                                
                                     <tr key = {comment.id}>
                                         <td>{comment.body}</td>
+                                        <td><button onClick={this.likeComment(comment.id)} >Likes:</button> {comment.likes}</td>
+                                        <td><button onClick={this.dislikeComment(comment.id)} >Disikes:</button> {comment.dislikes}</td>
                                     </tr>
-                                    <tr>
-                                        <td><button onClick={this.likeThisComment()} >Likes:</button> {comment.likes}</td>
-                                        <td><button onClick={this.likeThisComment()} >Disikes:</button> {comment.dislikes}</td>
-                                    </tr>
-                                </div>
+                                
                             );
                         })}
                         </tbody>
