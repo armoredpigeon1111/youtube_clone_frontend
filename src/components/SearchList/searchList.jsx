@@ -21,7 +21,7 @@ const SearchList = (props) => {
                 return(
                     
                     <div >
-                    <button onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} /></button><br/>
+                    <button onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} alt = ""/></button><br/>
                     <bold>{video.snippet.title}</bold><br/>
                     {video.snippet.description}
                     </div>
