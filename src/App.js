@@ -99,8 +99,8 @@ class App extends Component {
     return ( 
         <div className="container">
           <Search search = {this.myCallback}/>
-        <div className="row align-items-start">
-          <div className="col">
+        <div className="row ">
+          <div className="col-auto">
             {this.state.search !== '' ?
             <SearchList videos = {this.state.videos} func = {onSelect}/>
             : <div></div>}
