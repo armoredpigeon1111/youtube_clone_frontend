@@ -8,13 +8,24 @@ class CreateComment extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            comments: props.comments,
             comment: '',
             video_id: props.selectedVideo,
             likes: 0,
             dislikes: 0,
             reply_id: null,
+            refresh: false,
          }
     }
+
+    // async getComments(video) {
+    //     let response = await axios.get(`http://127.0.0.1:8000/comments/${video}/`)
+    //     this.setState({
+    //       comments: response.data,
+    //       dataloaded: true
+    //     })
+    //     console.log(this.state.comments);
+    //   }
 
 
     handleChange = (event) =>{
@@ -24,8 +35,14 @@ class CreateComment extends Component {
      }
  
      handleSubmit = (event) =>{
-         event.preventDefault();
+        event.preventDefault();
         this.addComment();
+        console.log("Props for create: ", this.props)
+        this.props.getComments(this.state.video_id);
+        this.setState({
+            refresh: !this.state.refresh
+        })
+        console.log("State of refresh: ", this.state.refresh)
      }  
 
     addComment = async() => {
@@ -39,12 +56,11 @@ class CreateComment extends Component {
         try{
             let response = await axios.post(`http://127.0.0.1:8000/comments/`, comment);
             console.log(response);
+            
         }
         catch{
             console.log("Unsuccessful Comment Add");
         }
-
-
       }   
 
     render() { 
