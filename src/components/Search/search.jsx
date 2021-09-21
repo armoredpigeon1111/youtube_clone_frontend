@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './search.css'
 
 class Search extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class Search extends Component {
                 <input name="search" onChange={this.handleChange} value = {this.state.search}></input>
                 <button className="btn" type="submit">Search</button>
                 </form>
+                <br /><br />
             </div>
          );
     }

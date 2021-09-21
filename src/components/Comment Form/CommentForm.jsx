@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CreateComment from '../CreateComment/createComment';
+import './CommentForm.css'
 
 
 class CommentForm extends Component {
