@@ -31,6 +31,7 @@ class CommentForm extends Component {
                 <div>
                     <CreateComment comments = {this.state.comments} selectedVideo = {this.state.selectedVideo}/>
                     
+                    
                     <br/><br/>
                     <table>
                         <thead>
@@ -41,11 +42,11 @@ class CommentForm extends Component {
                         <tbody>
                         {this.state.comments.map((comment) => {
                             return(
-                                
                                     <tr key = {comment.id}>
                                         <td>{comment.body}</td>
                                         <td><button  onClick={()=>this.likeComment(comment.id)} >Likes:</button> {comment.likes}</td>
                                         <td><button  onClick={()=>this.dislikeComment(comment.id)} >Disikes:</button> {comment.dislikes}</td>
+                                        <td><ReplyComment commentID = {comment.id} selectedVideo = {this.state.selectedVideo}/></td>
                                     </tr>
                             );
                         })}
