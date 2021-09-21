@@ -16,6 +16,7 @@ class CommentForm extends Component {
          }
     }
 
+    
     likeComment = async(commentID) => {
         await axios.patch(`http://127.0.0.1:8000/comments/${commentID}/likes/`);
         // this.getComments(video)
@@ -31,7 +32,7 @@ class CommentForm extends Component {
             return (
                 <div>
                     <CreateComment comments = {this.state.comments} selectedVideo = {this.state.selectedVideo}/>
-                    
+
                     
                     <br/><br/>
                     <table>

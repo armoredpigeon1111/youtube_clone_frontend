@@ -1,5 +1,6 @@
 import React from 'react';
 import './MainVideo.css';
+import CommentForm from '../Comment Form/CommentForm';
 
 const MainVideo = ({ selectedVideo, videoTitle, videoDescription }) => {
     // if(!selectedVideo) return <div>No Video Selected. Please search for a video</div>

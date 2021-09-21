@@ -44,7 +44,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyDr27JlfjiKPeYXzDp1qzqUI-l4pMNTJTs',
+        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
         q: search,
         type: 'video'
       }
@@ -61,7 +61,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyDr27JlfjiKPeYXzDp1qzqUI-l4pMNTJTs',
+        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
         relatedToVideoId: selectedVideo,
         type: 'video'
       }

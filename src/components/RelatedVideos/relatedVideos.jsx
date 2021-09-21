@@ -12,7 +12,6 @@ const RelatedVideos = (props) => {
         props.func(video_id, video_title, video_description);
         console.log("callback");
         console.log(video_id);
-
     }
 
     return ( 
