@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import CreateComment from '../CreateComment/createComment';
 
 
 class CommentForm extends Component {
@@ -7,7 +8,8 @@ class CommentForm extends Component {
         super(props);
         this.state = { 
             comments : props.comments,
-            comment: ''
+            comment: '',
+            selectedVideo: props.selectedVideo,
          }
     }
 
@@ -21,31 +23,11 @@ class CommentForm extends Component {
         // this.getComments(video)
       }
 
-    addComment = async() => {
-        await axios.post(`http://127.0.0.1:8000/comments/`, this.state.comment);
-        // this.getComments(video)
-      }  
-
-    handleChange = (event) =>{
-        this.setState({
-            [event.target.name]: event.target.value         
-        });
-     }
- 
-     handleSubmit = (event) =>{
-         event.preventDefault();
-        this.addComment();
-     }  
 
     render() { 
             return (
                 <div>
-
-                    <form onSubmit ={this.handleSubmit}>
-                        <label>Comment:</label>
-                        <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
-                        <button className="btn" type="submit">Add Comment</button>
-                    </form>
+                    <CreateComment comments = {this.state.comments} selectedVideo = {this.state.selectedVideo}/>
 
                     <br/><br/>
                     <table>
