@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './createComment.css'
 
 
 
@@ -28,7 +29,6 @@ class CreateComment extends Component {
      }  
 
     addComment = async() => {
-        debugger;
         const comment = {
             video_id: this.state.video_id,
             body: this.state.comment,
@@ -50,8 +50,8 @@ class CreateComment extends Component {
     render() { 
         return ( 
             <form onSubmit ={this.handleSubmit}>
-                <label>Comment:</label>
-                <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
+                <label>Leave A Comment:</label>
+                <input className="maskedBox" size="100" name="comment" onChange={this.handleChange} value={this.state.comment}></input>
                 <button className="btn" type="submit">Add Comment</button>
             </form>
          );

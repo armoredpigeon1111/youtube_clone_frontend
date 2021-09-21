@@ -24,10 +24,6 @@ class App extends Component {
      }
   }
 
-  componentDidMount(){
-    console.log("Inside component did mount");
-  }
-
 
   async getComments(video) {
     let response = await axios.get(`http://127.0.0.1:8000/comments/${video}/`)
@@ -44,7 +40,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
+        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
         q: search,
         type: 'video'
       }
@@ -61,7 +57,7 @@ class App extends Component {
       params:{
         part: 'snippet',
         maxResults: 5,
-        key: 'AIzaSyAJLJK5AN-qdr5IU71kZqtDKYItM0doVbY',
+        key: 'AIzaSyCBrMSzk3GmmDSgej52easCbphBZlr2ljE',
         relatedToVideoId: selectedVideo,
         type: 'video'
       }
@@ -81,7 +77,6 @@ class App extends Component {
   }
 
 
-
   render() { 
     const {search} = this.state;
     const onSelect = (video, video_title, video_description) =>{
@@ -93,12 +88,19 @@ class App extends Component {
         this.getRelatedVideos(video);  
         this.getComments(video);
     }
+    const commentRefresh = ()=>{
+      console.log("Comment Refresh");
+      this.getComments(this.state.selectedVideo);
+    }
 
 
 
     return ( 
+  
         <div className="container">
+          <div className="topBar"><img src = "https://tubularinsights.com/wp-content/uploads/2014/07/block-unwanted-youtube-channels.jpg" alt="not youtube" width="500px"/></div>
           <Search search = {this.myCallback}/>
+          
         <div className="row ">
           <div className="col-auto">
             {this.state.search !== '' ?
@@ -111,7 +113,7 @@ class App extends Component {
               videoTitle = {this.state.videoTitle} 
               videoDescription ={this.state.videoDescription}
               />}
-               {this.state.dataloaded && <CommentForm comments = {this.state.comments} selectedVideo = {this.state.selectedVideo} /> }
+               {this.state.dataloaded && <CommentForm comments = {this.state.comments} selectedVideo = {this.state.selectedVideo} func ={commentRefresh}/> }
           </div>
 
           <div className="col">
@@ -121,7 +123,7 @@ class App extends Component {
 
         </div>
 
-
+        <div className="bottomBar">Not YouTube Inc.</div>
         </div>
      );
   }

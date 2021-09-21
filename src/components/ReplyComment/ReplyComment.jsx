@@ -51,7 +51,6 @@ class ReplyComment extends Component {
         return ( 
 
             <form onSubmit ={this.handleSubmit}>
-                <label>Reply:</label>
                 <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
                 <button className="btn" type="submit">Reply</button>
             </form>
