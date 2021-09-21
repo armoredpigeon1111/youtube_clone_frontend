@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CreateComment from '../CreateComment/createComment';
-import './CommentForm.css'
+import ReplyComment from '../ReplyComment/ReplyComment';
+import './CommentForm.css';
 
 
 class CommentForm extends Component {
@@ -29,7 +30,7 @@ class CommentForm extends Component {
             return (
                 <div>
                     <CreateComment comments = {this.state.comments} selectedVideo = {this.state.selectedVideo}/>
-
+                    
                     <br/><br/>
                     <table>
                         <thead>
@@ -46,7 +47,6 @@ class CommentForm extends Component {
                                         <td><button  onClick={()=>this.likeComment(comment.id)} >Likes:</button> {comment.likes}</td>
                                         <td><button  onClick={()=>this.dislikeComment(comment.id)} >Disikes:</button> {comment.dislikes}</td>
                                     </tr>
-                                
                             );
                         })}
                         </tbody>

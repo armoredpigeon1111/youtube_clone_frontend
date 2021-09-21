@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-
-class CreateComment extends Component {
+class ReplyComment extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            id: props.commentID,
             comment: '',
             video_id: props.selectedVideo,
             likes: 0,
@@ -24,24 +24,24 @@ class CreateComment extends Component {
  
      handleSubmit = (event) =>{
          event.preventDefault();
-        this.addComment();
+        this.addReply();
      }  
 
-    addComment = async() => {
+    addReply = async() => {
         debugger;
         const comment = {
             video_id: this.state.video_id,
             body: this.state.comment,
             likes: this.state.likes,
             dislikes: this.state.dislikes,
-            reply_id: null
+            reply_id: this.state.id
         };
         try{
             let response = await axios.post(`http://127.0.0.1:8000/comments/`, comment);
             console.log(response);
         }
         catch{
-            console.log("Unsuccessful Comment Add");
+            console.log("Unsuccessful Reply");
         }
 
 
@@ -49,13 +49,15 @@ class CreateComment extends Component {
 
     render() { 
         return ( 
+
             <form onSubmit ={this.handleSubmit}>
-                <label>Comment:</label>
-                <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
-                <button className="btn" type="submit">Add Comment</button>
+                <label>Reply:</label>
+                <input name="reply" onChange={this.handleChange} value={this.state.comment}></input>
+                <button className="btn" type="submit">Reply</button>
             </form>
+
          );
     }
 }
  
-export default CreateComment;
+export default ReplyComment;
