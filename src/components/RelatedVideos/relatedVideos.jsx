@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './relatedVideos.css'
 
 
 const RelatedVideos = (props) => {
@@ -17,16 +17,17 @@ const RelatedVideos = (props) => {
 
     return ( 
         
-        <div>
+        <div className="p-2">
             <br /> <br />
-            <h2>Related Videos </h2>
             {videos.map((video)=>{
                 video_id = video.id.videoId
                 return(
                     
                     <div >
+
                         <button className = 'button2' onClick={()=>callBackFunction(video.id.videoId, video.snippet.title, video.snippet.description)}><img src={video.snippet.thumbnails.default.url} /></button><br/>
-                        <h3><strong>{video.snippet.title}</strong></h3>
+                        <h5><strong>{video.snippet.title}</strong></h5>
+
                     </div>
                 );
             })}

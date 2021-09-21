@@ -97,20 +97,31 @@ class App extends Component {
 
 
     return ( 
-        <div>
+        <div className="container">
           <Search search = {this.myCallback}/>
+        <div className="row align-items-start">
+          <div className="col">
+            {this.state.search !== '' ?
+            <SearchList videos = {this.state.videos} func = {onSelect}/>
+            : <div></div>}
+          </div>
 
-          {this.state.search !== '' ?
-          <SearchList videos = {this.state.videos} func = {onSelect}/>
-          : <div></div>}
+          <div className="col">
+            {this.state.selectedVideo && <MainVideo selectedVideo = {this.state.selectedVideo} 
+              videoTitle = {this.state.videoTitle} 
+              videoDescription ={this.state.videoDescription}
+              />}
+               {this.state.dataloaded && <CommentForm comments = {this.state.comments} selectedVideo = {this.state.selectedVideo} /> }
+          </div>
 
-          {this.state.selectedVideo && <MainVideo selectedVideo = {this.state.selectedVideo} 
-            videoTitle = {this.state.videoTitle} 
-            videoDescription ={this.state.videoDescription}
-            />}
-            {console.log("Comments in state: ", this.state.comments)}
-          {this.state.dataloaded && <CommentForm comments = {this.state.comments} selectedVideo = {this.state.selectedVideo} /> }
-          <RelatedVideos videos = {this.state.relatedVideos} func={onSelect} />
+          <div className="col">
+            <RelatedVideos videos = {this.state.relatedVideos} func={onSelect} />
+           
+          </div>
+
+        </div>
+
+
         </div>
      );
   }

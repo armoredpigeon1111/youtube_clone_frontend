@@ -9,7 +9,7 @@ const MainVideo = ({ selectedVideo, videoTitle, videoDescription }) => {
 
     return (
         
-        <div>
+        <div className="p-2">
             <iframe id="ytplayer" title = "videoPlayer" type="text/html" width="640" height="390"
                 src={videoSrc}
                 frameBorder="0">

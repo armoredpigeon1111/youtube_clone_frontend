@@ -18,7 +18,7 @@ class ReplyComment extends Component {
 
     handleChange = (event) =>{
         this.setState({
-            [event.target.name]: event.target.value         
+            [event.target.name]: event.target.value,        
         });
      }
  
@@ -52,7 +52,7 @@ class ReplyComment extends Component {
 
             <form onSubmit ={this.handleSubmit}>
                 <label>Reply:</label>
-                <input name="reply" onChange={this.handleChange} value={this.state.comment}></input>
+                <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
                 <button className="btn" type="submit">Reply</button>
             </form>
 

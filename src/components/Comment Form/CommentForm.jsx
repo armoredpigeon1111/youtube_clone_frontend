@@ -3,6 +3,7 @@ import axios from 'axios';
 import CreateComment from '../CreateComment/createComment';
 import ReplyComment from '../ReplyComment/ReplyComment';
 import './CommentForm.css';
+import ReplyForm from '../ReplyForm/replyform';
 
 
 class CommentForm extends Component {
@@ -46,7 +47,8 @@ class CommentForm extends Component {
                                         <td>{comment.body}</td>
                                         <td><button  onClick={()=>this.likeComment(comment.id)} >Likes:</button> {comment.likes}</td>
                                         <td><button  onClick={()=>this.dislikeComment(comment.id)} >Disikes:</button> {comment.dislikes}</td>
-                                        <td><ReplyComment commentID = {comment.id} selectedVideo = {this.state.selectedVideo}/></td>
+                                        <td><ReplyForm /></td>
+                                        <td><ReplyComment commentID = {comment.id} selectedVideo = {this.state.selectedVideo} /></td>
                                     </tr>
                             );
                         })}
